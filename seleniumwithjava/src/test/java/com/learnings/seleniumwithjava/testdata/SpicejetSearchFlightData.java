@@ -26,7 +26,7 @@ public class SpicejetSearchFlightData {
         searchFlightData2.put("from", "LKO");
         searchFlightData2.put("to", "TRV");
         searchFlightData2.put("departureDate", "2025-01-10");
-        searchFlightData2.put("returnDate", "2025-02-12");
+        searchFlightData2.put("returnDate", "2025-01-12");
         searchFlightData2.put("passengerAdult", "4");
         searchFlightData2.put("passengerChildren", "2");
         searchFlightData2.put("passengerInfant", "0");
@@ -38,14 +38,14 @@ public class SpicejetSearchFlightData {
         Map<String, String> searchFlightData3 = new HashMap<>();
         searchFlightData3.put("from", "STV");
         searchFlightData3.put("to", "RAJ");
-        searchFlightData3.put("departureDate", "2024-12-26");
+        searchFlightData3.put("departureDate", "2024-12-31");
         searchFlightData3.put("returnDate", "");
         searchFlightData3.put("passengerAdult", "2");
         searchFlightData3.put("passengerChildren", "0");
         searchFlightData3.put("passengerInfant", "0");
         searchFlightData3.put("currency", "INR");
         searchFlightData3.put("tripType", "One Way");
-        searchFlightData3.put("passengerType", "Semior Citizen");
+        searchFlightData3.put("passengerType", "Senior Citizen");
         searchFlightData.add(searchFlightData3);
 
         return searchFlightData;

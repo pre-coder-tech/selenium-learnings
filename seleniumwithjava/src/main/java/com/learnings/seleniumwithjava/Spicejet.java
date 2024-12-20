@@ -31,7 +31,7 @@ public class Spicejet {
     );
 
     /* Locators - Start */
-    private final String tripType = "//div[text()='${tripType}']/ancestor::div[contains(@data-testid, 'trip-radio')]";
+    private final String tripType = "//div[text()='${tripType}']/ancestor::div[contains(@data-testid, 'radio-button')]";
     private final String originInput = "//div[@data-testid='to-testID-origin']//input";
     private final String originSelection = "//div[@data-testid='to-testID-origin']//div[text()='${origin}']";
     private final String destinationInput = "//div[@data-testid='to-testID-destination']//input";
@@ -50,7 +50,7 @@ public class Spicejet {
     private final String currencySelection = "//div[text()='Currency']/parent::div/following-sibling::div//div[text()='${currency}']";
     private final String passengerTypeDiv = "//div[text()='${passengerType}']";
     private final String searchFlightButton = "//div[@data-testid='home-page-flight-cta']";
-    private final String searchResultsFilledContent = "//div[text()='Modify Search']/parent::div/parent::div/preceding-sibling::div/div/child::span";
+    // private final String searchResultsFilledContent = "//div[text()='Modify Search']/parent::div/parent::div/preceding-sibling::div/div/child::span";
 
     /* Locators - End */
     public void searchFlight() throws InterruptedException {
