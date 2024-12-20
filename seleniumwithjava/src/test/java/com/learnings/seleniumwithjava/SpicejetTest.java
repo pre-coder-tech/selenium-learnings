@@ -12,6 +12,9 @@ import org.testng.annotations.Test;
 
 import com.learnings.seleniumwithjava.testdata.SpicejetSearchFlightData;
 
+/**
+ * This class represents the test cases for the Spicejet flight booking process.
+ */
 public class SpicejetTest {
 
     private final List<Map<String, String>> flightDetails = SpicejetSearchFlightData.getSearchFlightData();

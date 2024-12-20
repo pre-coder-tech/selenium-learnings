@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+/** Represents the Test Data for the SpiceJet Search Fight Functionality */
 public class SpicejetSearchFlightData {
 
     public static List<Map<String, String>> getSearchFlightData() {
