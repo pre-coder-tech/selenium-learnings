@@ -2,6 +2,7 @@ package com.learnings.seleniumwithjava;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -87,6 +88,28 @@ public class UdemyAssignments {
             driver.switchTo().frame(driver.findElement(By.name("frame-middle")));
             System.out.println(driver.findElement(By.id("content")).getText());
             driver.switchTo().defaultContent();
+        } finally {
+            driver.quit();
+        }
+    }
+
+    @Test(description="Assignment6 from the Udemy Course - playing with data")
+    public void testDataTransfers() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        options.addArguments("--start-maximized");
+        WebDriver driver = new ChromeDriver(options);
+        try {
+            driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+            List<WebElement> checkboxes = driver.findElements(By.cssSelector("div#checkbox-example input"));
+            WebElement checkboxToBeClicked = checkboxes.get(new Random().nextInt(checkboxes.size()));
+            checkboxToBeClicked.click();
+            String selectedCheckboxText = checkboxToBeClicked.findElement(By.xpath("./..")).getText().trim();    
+            Select dropdown = new Select(driver.findElement(By.id("dropdown-class-example")));
+            dropdown.selectByVisibleText(selectedCheckboxText);
+            driver.findElement(By.id("name")).sendKeys(selectedCheckboxText);
+            driver.findElement(By.id("alertbtn")).click();
+            System.out.println(driver.switchTo().alert().getText().contains(selectedCheckboxText));
         } finally {
             driver.quit();
         }
