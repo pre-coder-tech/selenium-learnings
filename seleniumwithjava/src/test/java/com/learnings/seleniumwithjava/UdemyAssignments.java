@@ -53,9 +53,10 @@ public class UdemyAssignments {
 
             // Add items to cart
             List<WebElement> products = driver.findElements(By.cssSelector("button[class='btn btn-info']"));
-            for (WebElement product : products) {
-                product.click();
-            }
+            products.stream().forEach(product -> product.click()); // Update with Java 8 Stream API
+            // for (WebElement product : products) {
+            //     product.click();
+            // } // Old way of doing the same
 
             // Checkout
             driver.findElement(By.partialLinkText("Checkout")).click();
@@ -74,13 +75,20 @@ public class UdemyAssignments {
             driver.get("https://the-internet.herokuapp.com/windows");
             driver.findElement(By.linkText("Click Here")).click();
             String parentWindow = driver.getWindowHandle();
-            for (String window : driver.getWindowHandles()) {
+            driver.getWindowHandles().forEach(window -> {
                 if (!window.equals(parentWindow)) {
                     driver.switchTo().window(window);
                     System.out.println(driver.findElement(By.tagName("h3")).getText());
                     driver.close();
                 }
-            }
+            }); // Update with Java 8 Stream API
+            // for (String window : driver.getWindowHandles()) {
+            //     if (!window.equals(parentWindow)) {
+            //         driver.switchTo().window(window);
+            //         System.out.println(driver.findElement(By.tagName("h3")).getText());
+            //         driver.close();
+            //     }
+            // } // Old way of doing the same
             driver.switchTo().window(parentWindow);
             System.out.println(driver.findElement(By.tagName("h3")).getText());
         } finally {
@@ -139,9 +147,10 @@ public class UdemyAssignments {
             System.out.println("Number of rows: " + rows.size());
             System.out.println("Number of columns:" + rows.get(0).findElements(By.tagName("th")).size());
             List<WebElement> secondRowValues = rows.get(2).findElements(By.tagName("td"));
-            for (WebElement value : secondRowValues) {
-                System.out.println(value.getText());
-            }
+            secondRowValues.stream().forEach(value -> System.out.println(value.getText())); // Update with Java 8 Stream API
+            // for (WebElement value : secondRowValues) {
+            //     System.out.println(value.getText());
+            // } // Old way of doing the same
         } finally {
             driver.quit();
         }
