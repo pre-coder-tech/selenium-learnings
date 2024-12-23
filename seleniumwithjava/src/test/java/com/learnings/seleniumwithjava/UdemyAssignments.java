@@ -10,8 +10,10 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
@@ -269,6 +271,64 @@ public class UdemyAssignments {
         } finally {
             driver.quit();
             softAssert.assertAll();
+        }
+    }
+
+    @Test(description="Learning WebTables Handling using Java Streams")
+    public void testDataRetrievalFromWebTable(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        options.addArguments("--start-maximized");
+        WebDriver driver = new ChromeDriver(options);
+        try {
+            driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+            driver.findElement(By.xpath("//th[1]")).click(); //Sort the Table
+
+            //Asserting if the sorted value fetched from the table and derived from us is the same
+            List<String> originalNamesListFromTable = driver.findElements(By.xpath("//td[1]")).stream().map(element -> element.getText()).collect(Collectors.toList());
+            List<String> sortedNamesListDerived = originalNamesListFromTable.stream().sorted().collect(Collectors.toList());
+            Assert.assertTrue(originalNamesListFromTable.equals(sortedNamesListDerived));
+
+            //Coding to get a specific item price from the table - handles pagination as well
+            List<String> itemPrice;
+            List<WebElement> itemNameElements;
+            do { 
+                itemNameElements = driver.findElements(By.xpath("//td[1]"));
+                itemPrice = itemNameElements.stream()
+                    .filter(element -> element.getText().contains("Wheat"))
+                    .map(element -> {
+                        return element.findElement(By.xpath("following-sibling::td[1]")).getText();
+                    })
+                    .collect(Collectors.toList());
+                itemPrice.forEach(price -> System.out.println("Price of item: " + price));
+                if (itemPrice.isEmpty()) {
+                    driver.findElement(By.xpath("//a[@aria-label='Next']")).click();
+                }   
+            } while (itemPrice.isEmpty());
+            
+        } finally {
+            driver.quit();
+        }
+    }
+
+    @Test(description="Learning - Verifying the Search result with the data in the table") 
+    public void testSearchResultVerification() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        options.addArguments("--start-maximized");
+        WebDriver driver = new ChromeDriver(options);
+        try {
+            driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+            driver.findElement(By.id("search-field")).sendKeys("to"); //Search for items containing word "to" in it
+
+            //Get the search result and verify if the search result is present in the table
+            List<WebElement> searchResult = driver.findElements(By.xpath("//td[1]"));
+            List<WebElement> filteredSearchResultDerived = driver.findElements(By.xpath("//td[1]")).stream()
+                                            .filter(element -> element.getText().contains("to"))
+                                            .collect(Collectors.toList());
+            Assert.assertTrue("Search didn't work properly", searchResult.size() == filteredSearchResultDerived.size());
+        } finally {
+            driver.quit();
         }
     }
 }
