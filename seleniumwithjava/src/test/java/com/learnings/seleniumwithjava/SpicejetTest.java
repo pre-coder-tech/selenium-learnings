@@ -20,7 +20,7 @@ public class SpicejetTest {
     private final List<Map<String, String>> flightDetails = SpicejetSearchFlightData.getSearchFlightData();
 
     @Test(description = "Able to search the flight")
-    public void ableToSearchFlight() {
+    public void testAbleToSearchFlight() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications"); //`disable-notifications` flag to disable the browser notifications
         options.addArguments("--disable-geolocation"); //`disable-geolocation` flag to disable the browser geolocation

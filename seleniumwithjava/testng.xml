@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite" parallel="true">
+    <test name="RealTimeTesting">
+        <classes>
+            <class name="com.learnings.seleniumwithjava.SpicejetTest"/>
+        </classes>
+    </test>
+    <test name="UdemyCourseLearnings">
+        <classes>
+            <class name="com.learnings.seleniumwithjava.UdemyAssignments"/>
+        </classes>
+    </test>
+</suite>

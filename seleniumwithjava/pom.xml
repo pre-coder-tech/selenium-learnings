@@ -9,13 +9,12 @@
     <version>1.0</version>
 
     <name>seleniumwithjava</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <!-- FIXME change it to the project's website
+    <url>http://www.example.com</url> -->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.release>23</maven.compiler.release>
     </properties>
 
     <dependencies>
@@ -63,11 +62,18 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>3.13.0</version>
+                    <configuration>
+                        <release>23</release> <!-- Or your desired Java version -->
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.1</version>
+                    <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>testng.xml</suiteXmlFile>
+                        </suiteXmlFiles>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
