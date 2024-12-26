@@ -145,7 +145,7 @@ public class UdemyAssignments {
         WebDriver driver = new ChromeDriver(options);
         try {
             driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-            List<WebElement> rows = driver.findElements(By.cssSelector("table#product[name=''] tr"));
+            List<WebElement> rows = driver.findElements(By.cssSelector("table#product[name='courses'] tr"));
             System.out.println("Number of rows: " + rows.size());
             System.out.println("Number of columns:" + rows.get(0).findElements(By.tagName("th")).size());
             List<WebElement> secondRowValues = rows.get(2).findElements(By.tagName("td"));
