@@ -13,7 +13,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
@@ -25,6 +24,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -326,7 +326,7 @@ public class UdemyAssignments {
             List<WebElement> filteredSearchResultDerived = driver.findElements(By.xpath("//td[1]")).stream()
                                             .filter(element -> element.getText().contains("to"))
                                             .collect(Collectors.toList());
-            Assert.assertTrue("Search didn't work properly", searchResult.size() == filteredSearchResultDerived.size());
+            Assert.assertTrue(searchResult.size() == filteredSearchResultDerived.size());
         } finally {
             driver.quit();
         }

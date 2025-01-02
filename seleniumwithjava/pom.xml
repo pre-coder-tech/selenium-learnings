@@ -9,8 +9,6 @@
     <version>1.0</version>
 
     <name>seleniumwithjava</name>
-    <!-- FIXME change it to the project's website
-    <url>http://www.example.com</url> -->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,7 +35,6 @@
             <artifactId>commons-io</artifactId>
             <version>2.18.0</version>
         </dependency>
-
     </dependencies>
 
     <build>
