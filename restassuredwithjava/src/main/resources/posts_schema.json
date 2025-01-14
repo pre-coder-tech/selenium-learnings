@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "userId": "number",
+    "id": "number",
+    "title": "string",
+    "body": "string"
+}
